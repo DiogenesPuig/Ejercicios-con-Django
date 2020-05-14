@@ -7,7 +7,7 @@ class Autor(models.Model):
     Nombre = models.CharField(max_length=50)
 
     def __str__(self):
-        return '{}'.format(self.Nombre,self.Codigo)
+        return "Autor: " + str(self.Codigo) + " " + str(self.Nombre)
 
 class Libro(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -17,7 +17,7 @@ class Libro(models.Model):
     Autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}'.format(self.Codigo,self.Titulo,self.Editorial,self.Autor,self.Paginas)
+        return "Libro: " + str(self.Codigo) + " " + self.Titulo + " " + self.Editorial + " " + str(self.Paginas) + " " + str(self.Autor)
 
 class Usuario(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -26,7 +26,7 @@ class Usuario(models.Model):
     Direccion = models.CharField(max_length=50)
 
     def __str__(self):
-        return '{}'.format(self.Codigo,self.Nombre,self.Telefono,self.Direccion)
+        return "Usuario : " + str(self.Codigo) + " " + self.Nombre + " " + self.Telefono + " " + self.Direccion
 
 class Ejemplar(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -35,4 +35,4 @@ class Ejemplar(models.Model):
     Usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, default="")
 
     def __str__(self):
-        return '{}'.format(self.Codigo,self.Localizacion,self.Libro,self.Usuario)
+        return "Ejemplar : " + str(self.Codigo) +" "+self.Localizacion + " " + str(self.Libro) + " " + str(self.Usuario)
