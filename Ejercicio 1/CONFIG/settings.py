@@ -27,6 +27,38 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+JET_THEMES = [
+    {
+        'theme': 'default', # theme folder name
+        'color': '#47bac1', # color of the theme's button in user menu
+        'title': 'Default' # theme title
+    },
+    {
+        'theme': 'green',
+        'color': '#44b78b',
+        'title': 'verde'
+    },
+    {
+        'theme': 'light-green',
+        'color': '#2faa60',
+        'title': 'verde claro'
+    },
+    {
+        'theme': 'light-violet',
+        'color': '#a464c4',
+        'title': 'violeta claro'
+    },
+    {
+        'theme': 'light-blue',
+        'color': '#5EADDE',
+        'title': 'celeste'
+    },
+    {
+        'theme': 'light-gray',
+        'color': '#222',
+        'title': 'gris claro'
+    }
+]
 
 # Application definition
 

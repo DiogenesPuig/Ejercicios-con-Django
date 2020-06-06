@@ -7,7 +7,7 @@ class Autor(models.Model):
     Nombre = models.CharField(max_length=50)
 
     def __str__(self):
-        return "Autor: " + str(self.Codigo) + " " + str(self.Nombre)
+        return "Autor: codigo: " + str(self.Codigo) + ", nombre: " + str(self.Nombre)
 
 class Libro(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -17,7 +17,7 @@ class Libro(models.Model):
     Autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Libro: " + str(self.Codigo) + " " + self.Titulo + " " + self.Editorial + " " + str(self.Paginas) + " " + str(self.Autor)
+        return "Libro: codigo: " + str(self.Codigo) + ", titulo: " + self.Titulo + ", editorial: " + self.Editorial + ", paginas: " + str(self.Paginas) + ", " + str(self.Autor)
 
 class Ejemplar(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -25,7 +25,7 @@ class Ejemplar(models.Model):
     Libro = models.ForeignKey(Libro, on_delete=models.CASCADE, default="")
 
     def __str__(self):
-        return "Ejemplar : " + str(self.Codigo) +" "+self.Localizacion + " " + str(self.Libro)
+        return "Ejemplar : codigo: " + str(self.Codigo) +",  localizacion: "+self.Localizacion + ", " + str(self.Libro)
 
 class Usuario(models.Model):
     Codigo = models.AutoField(primary_key=True)
@@ -35,4 +35,4 @@ class Usuario(models.Model):
     Ejemplar =models.ManyToManyField(Ejemplar)
 
     def __str__(self):
-        return "Usuario : " + str(self.Codigo) + " " + self.Nombre + " " + self.Telefono + " " + self.Direccion + " " + self.Ejemplar
+        return "Usuario : codigo: " + str(self.Codigo) + ", nombre: " + self.Nombre + ", telefono: " + self.Telefono + ", direccion: " + self.Direccion + ", " + str(self.Ejemplar)
