@@ -19,20 +19,20 @@ class Libro(models.Model):
     def __str__(self):
         return "Libro: " + str(self.Codigo) + " " + self.Titulo + " " + self.Editorial + " " + str(self.Paginas) + " " + str(self.Autor)
 
+class Ejemplar(models.Model):
+    Codigo = models.AutoField(primary_key=True)
+    Localizacion = models.CharField(max_length=50)
+    Libro = models.ForeignKey(Libro, on_delete=models.CASCADE, default="")
+
+    def __str__(self):
+        return "Ejemplar : " + str(self.Codigo) +" "+self.Localizacion + " " + str(self.Libro)
+
 class Usuario(models.Model):
     Codigo = models.AutoField(primary_key=True)
     Nombre = models.CharField(max_length=50)
     Telefono = models.CharField(max_length=50)
     Direccion = models.CharField(max_length=50)
+    Ejemplar =models.ManyToManyField(Ejemplar)
 
     def __str__(self):
-        return "Usuario : " + str(self.Codigo) + " " + self.Nombre + " " + self.Telefono + " " + self.Direccion
-
-class Ejemplar(models.Model):
-    Codigo = models.AutoField(primary_key=True)
-    Localizacion = models.CharField(max_length=50)
-    Libro = models.ForeignKey(Libro, on_delete=models.CASCADE, default="")
-    Usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, default="")
-
-    def __str__(self):
-        return "Ejemplar : " + str(self.Codigo) +" "+self.Localizacion + " " + str(self.Libro) + " " + str(self.Usuario)
+        return "Usuario : " + str(self.Codigo) + " " + self.Nombre + " " + self.Telefono + " " + self.Direccion + " " + self.Ejemplar
