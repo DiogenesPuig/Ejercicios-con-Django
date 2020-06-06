@@ -9,6 +9,10 @@ class Autor(models.Model):
     def __str__(self):
         return "Autor: codigo: " + str(self.Codigo) + ", nombre: " + str(self.Nombre)
 
+    class Meta:
+        verbose_name = "Autor"
+        verbose_name_plural = "Autores"
+
 class Libro(models.Model):
     Codigo = models.AutoField(primary_key=True)
     Titulo = models.CharField(max_length=50)
@@ -26,6 +30,10 @@ class Ejemplar(models.Model):
 
     def __str__(self):
         return "Ejemplar : codigo: " + str(self.Codigo) +",  localizacion: "+self.Localizacion + ", " + str(self.Libro)
+
+    class Meta:
+        verbose_name = "Ejemplar"
+        verbose_name_plural = "Ejemplares"
 
 class Usuario(models.Model):
     Codigo = models.AutoField(primary_key=True)
