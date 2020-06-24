@@ -4,8 +4,13 @@ from biblioteca.models import Libro
 from biblioteca.models import Ejemplar
 from biblioteca.models import Usuario
 
-# Register your models here.
+class LibroAdmin(admin.ModelAdmin):
+    list_display = ('Titulo','Editorial')
+
+
+
+
 admin.site.register(Autor,)
-admin.site.register(Libro,)
+admin.site.register(Libro,LibroAdmin)
 admin.site.register(Ejemplar,)
 admin.site.register(Usuario,)
