@@ -17,11 +17,18 @@ class Libro(models.Model):
     Paginas = models.IntegerField()
     Autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
 
-
 class Ejemplar(models.Model):
     Codigo = models.AutoField(primary_key=True)
     Localizacion = models.CharField(max_length=50)
-    Libro = models.ForeignKey(Libro, on_delete=models.CASCADE, default="")
+    Libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+
+    def NombreLibro(self):
+        return self.Libro.Titulo
+    NombreLibro.short_description = "Libro"
+
+    def NombreEditorial(self):
+        return self.Libro.Editorial
+    NombreEditorial.short_description = "Editorial"
 
     class Meta:
         verbose_name = "Ejemplar"
@@ -33,3 +40,7 @@ class Usuario(models.Model):
     Telefono = models.CharField(max_length=50)
     Direccion = models.CharField(max_length=50)
     Ejemplar =models.ManyToManyField(Ejemplar)
+
+    def get_Codigo(self):
+        return Usuario.Codigo
+    get_Codigo.short_description = "id"
